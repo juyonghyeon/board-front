@@ -1,11 +1,11 @@
 'use client'
-
-import React from "react";
-import styled from "styled-components";
-import logo1 from '@/app/_global/assets/images/logo1.png'
-import Image from "next/image";
-import Link from "next/link";
-
+import React from 'react'
+import styled from 'styled-components'
+import { FiUserPlus, FiLogIn } from 'react-icons/fi'
+import logo1 from '../assets/images/logo1.png'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from '../components/Buttons'
 const StyledHeader = styled.header`
   background: #fff;
 
@@ -30,27 +30,41 @@ const StyledHeader = styled.header`
 
     .right {
       text-align: right;
+
+      a + a {
+        margin-left: 5px;
+      }
     }
   }
 `
 
 const Header = () => {
-    return (
-      <StyledHeader>
-        <div className="inner layout-width">
-          <div className="left"></div>
-          <div className="logo-section">
-            <Link href="/">
-              <Image src={logo1} alt="logo" className="header-logo" />
-            </Link>
-          </div>
-          <div className="right">
-            <Link href="/member/join">회원가입</Link>
-            <Link href="/member/login">로그인</Link>
-          </div>
+  return (
+    <StyledHeader>
+      <div className="inner layout-width">
+        <div className="left"></div>
+        <div className="logo-section">
+          <Link href="/">
+            <Image src={logo1} alt="logo" className="header-logo" />
+          </Link>
         </div>
-      </StyledHeader>
-    )
+        <div className="right">
+          <Link href="/member/join">
+            <Button type="button">
+              <FiUserPlus />
+              회원가입
+            </Button>
+          </Link>
+          <Link href="/member/login">
+            <Button type="button" color="secondary">
+              <FiLogIn />
+              로그인
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </StyledHeader>
+  )
 }
 
 export default React.memo(Header)
